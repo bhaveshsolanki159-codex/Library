@@ -1,67 +1,71 @@
 class Library:
-    TotalBooks=0
-    def __init__(self):
-        self.books =[]
+    TotalBook = 0
+    TotalLibrary = 0
     
-    def add_book(self,book):
-        # no0fBooks+=1
-        self.TotalBooks+=1
+    def __init__(self):
+        self.books = []
+        Library.TotalLibrary += 1
+
+
+    
+    def add_book(self, book: str) -> None:
+        """Adds a book to the library"""
         self.books.append(book)
+        Library.TotalBook += 1
+
 
     # def TotalBooks(self):
     #     return no0fBooks
 
-    def display_books(self):
-        for book in self.books:
-            print(book)
+    def display_books(self) -> None:
+        """Displays all books in the library"""
+        if self.books:
+            print("Books in library:")
+            for book in self.books:
+                print(f"- {book}")
+        else:
+            print("The library is empty")
 
-    def no0fBooks(self):
+
+    def number_of_books(self) -> int:
+        """Returns the number of books in the library"""
         return len(self.books)
-    
-    def remove_book(self,book):
-        self.books.remove(book)
 
-# class ScienceFrictionBooks(Library):
-#     def __init__(self):
-#         super().__init__()
-#         self.ScienceFrictionBooks = []
 
-#     def add_book(self, book):
-#         self.books.append(book)
-#         return super().add_book(book)
+    
+    def remove_book(self, book: str) -> None:
+        """Removes a book from the library"""
+        if book in self.books:
+            self.books.remove(book)
+        else:
+            print(f"Book '{book}' not found in library")
 
-#     def display_books(self):
-#         return super().display_books()
-    
-#     def no0fBooks(self):
-#         return super().no0fBooks()
-    
-#     def remove_book(self, book):
-#         return super().remove_book(book)
+
+
 
 
 
 if __name__ == "__main__":
-    ScienceFrictionBooks = Library()
+    science_books = Library()
 
-    ScienceFrictionBooks.add_book("Physics")
-    ScienceFrictionBooks.add_book("Chemistry")
-    ScienceFrictionBooks.add_book("Biology")
-    ScienceFrictionBooks.add_book("Mathematics")
+    science_books.add_book("Physics")
+    science_books.add_book("Chemistry")
+    science_books.add_book("Biology")
+    science_books.add_book("Mathematics")
 
-    ScienceFrictionBooks.display_books()
-    print(ScienceFrictionBooks.no0fBooks())
+    science_books.display_books()
+    print(science_books.number_of_books())
 
-    PhylosophyBooks = Library()
+    philosophy_books = Library()
 
-    PhylosophyBooks.add_book("The Republic")
-    PhylosophyBooks.add_book("The Prince")
-    PhylosophyBooks.add_book("The Art of War")
-    PhylosophyBooks.add_book("The Wealth of Nations")
+    philosophy_books.add_book("The Republic")
+    philosophy_books.add_book("The Prince")
+    philosophy_books.add_book("The Art of War")
+    philosophy_books.add_book("The Wealth of Nations")
 
-    PhylosophyBooks.display_books()
-    print(PhylosophyBooks.no0fBooks())
+    philosophy_books.display_books()
+    print(philosophy_books.number_of_books())
 
-    print(Library.Books())
 
-    
+    print(f"Total libraries created: {Library.TotalLibrary}")
+    print(f"Total book added in all libraries: {Library.TotalBook}")
